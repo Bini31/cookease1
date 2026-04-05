@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<body style="background-image: url('{% static 'image/3.jpg' %}'); background-size: cover; align-items:center">
+<div class="container mt-5 mb-5 p-5 w-75 d-flex justify-content-center ">
+
+    <div class="card text-center " style="width:50%; ">
+  <img class="card-img-top" src="{{recipes.image.url}}" alt="Card image cap">
+  <div class="card-body text-dark" style="text-align:justify">
+    <h5 class="card-title text-dark text-center">{{recipes.recipename}}</h5>
+    <p class="card-text text-dark"><b>Ingredients: </b>{{recipes.ingredients}}</p>
+      <p class="card-text text-dark"  style="text-align: justify;"><b>Instructions: </b>{{recipes.instructions}}</p>
+      <p><b>Cuisine:</b>{{recipes.cusine}}</p>
+      <p><b>Meal Type:</b>{{recipes.mealtype}}</p>
+{% if user.is_superuser == False %}
+<div class="d-flex justify-content-center">
+    <a class="btn btn-warning" href="{% url 'recipesbook:review'   recipes.id%}">Add Review</a>
+</div>
+{% endif %}
+      <p><b>Review:</b></p>
+
+      {% if user.is_authenticated %}
+           {% if recipes.reviews.exists%}
+
+
+         <ol style="text-align:left">
+        {% for j in recipes.reviews.all %}
+        <li>{{j.username}} | {% for i in "12345" %}
+    {% if forloop.counter <= j.rating %}
+        ⭐
+    {% else %}
+        ☆
+    {% endif %}
+{% endfor %}| {{j.comments}}</li>
+        {% endfor %}
+
+        </ol>
+
+      {% else %}
+       <p>No review</p>
+{% endif %}
+           {% endif %}
+
+
+  </div>
+    </div>
+
+</div>
+</body>
+{% endblock %}

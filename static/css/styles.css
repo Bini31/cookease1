@@ -1,0 +1,24 @@
+body{
+
+color:white
+}
+.add{
+  background-image: url("../image/recipe.jpg");
+    background-size: cover;
+}
+}
+.navbar,.navbar-light .navbar-nav .nav-link
+
+{
+
+    color:blue;
+}
+.navbar-light .navbar-nav .nav-link
+
+{
+    color:darkgreen;
+}
+.navbar-light .navbar-brand
+{
+color:darkgreen;
+}

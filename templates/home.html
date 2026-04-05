@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<body style="background-image: url('{% static 'image/2.jpg' %}'); background-size: cover;">
+<div class="container mt-5 mb-5 p-5 w-75  justify-content-left ">
+    <h3 style="color:white">
+     "Cooking is at once child's play and adult joy. And cooking done with care is an act of love." — Craig Claiborne
+    </h3>
+<!--   <div class="d-flex justify-content-center">-->
+<!--           <a href="{% url 'recipesbook:register'%}" class="btn btn-warning">-->
+<!--               Create Account-->
+
+<!--           </a></div><br>-->
+
+<!--    <div class="d-flex justify-content-center">-->
+<!--          <a href="{% url 'recipesbook:login'%}" class="btn btn-warning">-->
+<!--              Login-->
+
+<!--           </a>-->
+<!--       </div>-->
+</div>
+</body>
+{% endblock %}

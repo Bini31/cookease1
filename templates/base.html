@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-2 fst-italic fw-bold" href="#">Cook Ease</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav fs-5 fw-lighter ms-auto mb-2 mb-lg-0" style="text-align:left">
+        <li class="nav-item ">
+          <a class="nav-link " aria-current="page" href="{% url 'recipesbook:home' %}">Home</a>
+        </li>
+
+{% if user.is_authenticated %}
+             {% if user.is_superuser == True %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'recipesbook:addrecipes' %}">Addrecipe</a>
+        </li>
+          {% endif %}
+    <li class="nav-item">
+          <a class="nav-link" href="{% url 'recipesbook:viewrecipes' %}">Viewrecipe</a>
+        </li>
+
+
+     <li class="nav-item">
+          <a class="nav-link" href="{% url 'recipesbook:logout' %}">Logout</a>
+        </li>
+             </ul>
+
+ {% else %}
+          <ul class="navbar-nav fs-5 fw-lighter mb-2 mb-lg-0" style="text-align:left">
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'recipesbook:register' %}">Register</a>
+        </li>
+             <li class="nav-item">
+          <a class="nav-link" href="{% url 'recipesbook:login' %}">Login</a>
+        </li>
+               {% endif %}
+          </ul>
+
+
+
+    </div>
+  </div>
+</nav>
+{% block content %}
+hello
+{% endblock %}
+</body>
+</html>

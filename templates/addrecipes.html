@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<body style="background-image: url('{% static 'image/3.jpg' %}'); background-size: cover;">
+<div class="container mt-5 mb-5 p-5 w-50 text-center border border-2 border-light" style="background-image: url('{% static 'image/recipe.jpg' %}'); background-size: cover;">
+    <h3>
+     Add Recipes Here...
+    </h3>
+          <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+    <input style="background-color:yellow;color:black" type="submit">
+    </form>
+</div>
+</body>
+{% endblock %}

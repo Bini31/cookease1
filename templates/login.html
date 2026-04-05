@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<body style="background-image: url('{% static 'image/3.jpg' %}'); background-size: cover; align-items:center">
+<div class="container mt-5 mb-5 p-5 w-50 text-center border border-2 border-light">
+    <h3>
+     Login
+    </h3>
+         <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        {{form|crispy}}
+        <br>
+    <input style="background-color:yellow;color:black" type="submit" >
+    </form>
+    {% if messages %}
+<ul type="none" class="messages fs-5 fw-bold text-danger pt-3">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+</body>
+{% endblock %}
