@@ -13,5 +13,4 @@ class Review(models.Model):
     comments=models.TextField()
     username=models.ForeignKey(User,on_delete=models.CASCADE)
     recipe=models.ForeignKey(Recipe,on_delete=models.CASCADE,related_name='reviews')
-    def __str__(self):
-        return self.rating,self.comments
+
